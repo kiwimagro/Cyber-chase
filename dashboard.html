@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-tema="escuro">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Painel de progresso do Cyber Chase: veja quantos cursos você já concluiu e qual fazer a seguir.">
+  <title>Meu Progresso — Cyber Chase</title>
+  <link rel="icon" type="image/svg+xml" href="assets/img/logo.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  <script>
+    try {
+      if (localStorage.getItem("cc_tema") === "claro") document.documentElement.setAttribute("data-tema", "claro");
+      if (localStorage.getItem("cc_leitura") === "ativo") document.documentElement.classList.add("modo-leitura");
+    } catch (e) { /* usa o padrão escuro */ }
+  </script>
+</head>
+<body>
+  <a class="pular-conteudo" href="#conteudo">Pular para o conteúdo</a>
+
+  <!-- ========================= CABEÇALHO ========================= -->
+  <header class="cabecalho">
+    <div class="conteiner cabecalho-interno">
+      <a class="logo" href="index.html">
+        <img src="assets/img/logo.svg" alt="Escudo do Cyber Chase">
+        <span>Cyber Chase</span>
+      </a>
+      <nav class="navegacao" aria-label="Navegação principal">
+        <ul>
+          <li><a href="index.html">Início</a></li>
+          <li><a href="cursos.html">Cursos</a></li>
+          <li><a href="quiz.html">Quiz Geral</a></li>
+          <li><a href="dashboard.html" aria-current="page">Meu Progresso</a></li>
+          <li><a href="sobre.html">Sobre</a></li>
+          <li><a href="contato.html">Contato</a></li>
+        </ul>
+      </nav>
+      <div class="acoes-cabecalho">
+        <button class="botao-icone botao-leitura" type="button" aria-label="Ativar modo de leitura" aria-pressed="false" title="Modo de leitura">
+          <i class="fa-solid fa-text-height" aria-hidden="true"></i>
+        </button>
+        <button class="botao-icone botao-tema" type="button" aria-label="Ativar tema claro" title="Alternar tema">
+          <i class="fa-solid fa-moon" aria-hidden="true"></i>
+        </button>
+        <button class="botao-icone botao-menu" type="button" aria-expanded="false" aria-label="Abrir menu">
+          <i class="fa-solid fa-bars" aria-hidden="true"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="conteudo">
+    <section class="secao">
+      <div class="conteiner">
+        <h1 class="titulo-secao">Meu Progresso</h1>
+        <p class="subtitulo-secao">Acompanhe sua jornada de aprendizado. Seu progresso fica salvo neste navegador.</p>
+
+        <!-- Barra de progresso geral (requisito 14) -->
+        <div class="card painel-progresso">
+          <div class="rotulo">
+            <span id="rotulo-progresso">0 de 6 cursos concluídos</span>
+            <span id="percentual-progresso">0%</span>
+          </div>
+          <div class="barra-progresso" role="progressbar" aria-valuemin="0" aria-valuemax="6" aria-valuenow="0" id="barra-progresso">
+            <div class="preenchimento" id="preenchimento"></div>
+          </div>
+        </div>
+
+        <!-- Sugestão do próximo curso (requisito 15) -->
+        <div class="card sugestao" id="caixa-sugestao">
+          <i class="fa-solid fa-lightbulb" aria-hidden="true"></i>
+          <div>
+            <strong id="sugestao-nome">Carregando…</strong>
+            <p>Que tal continuar por aqui?</p>
+            <a class="botao" id="sugestao-link" href="cursos.html">Ver sugestão</a>
+          </div>
+        </div>
+
+        <!-- Lista de cursos com checkmarks (requisito 16) -->
+        <h2 class="titulo-secao" style="margin-top: 2rem;">Seus cursos</h2>
+        <ul class="lista-conclusao" id="lista-conclusao">
+          <li>Carregando cursos…</li>
+        </ul>
+
+        <!-- Melhor pontuação do quiz geral -->
+        <p class="subtitulo-secao" style="margin-top: 1.5rem;" id="melhor-quiz">Você ainda não fez o quiz geral.</p>
+      </div>
+    </section>
+  </main>
+
+  <!-- ========================== RODAPÉ ========================== -->
+  <footer class="rodape">
+    <div class="conteiner rodape-interno">
+      <p><strong>Cyber Chase</strong><br><small>Sua segurança começa aqui.</small></p>
+      <nav aria-label="Links do rodapé">
+        <ul>
+          <li><a href="sobre.html">Sobre</a></li>
+          <li><a href="contato.html">Contato</a></li>
+          <li><a href="sobre.html#privacidade">Política de Privacidade</a></li>
+        </ul>
+      </nav>
+      <small>© <span class="ano-atual">2026</span> Cyber Chase — Conteúdo educativo e gratuito.</small>
+    </div>
+  </footer>
+
+  <script type="module" src="js/main.js"></script>
+  <script type="module">
+    // Monta o painel: barra de progresso, sugestão, checklist e pontuação
+    import { carregarCursos } from "./js/cursos.js";
+    import { Progresso } from "./js/progresso.js";
+
+    const TOTAL_CURSOS = 6;
+
+    async function montarPainel() {
+      const total = Progresso.totalConcluidos();
+
+      // Barra de progresso (requisito 14)
+      document.getElementById("rotulo-progresso").textContent =
+        `${total} de ${TOTAL_CURSOS} cursos concluídos`;
+      const percentual = Math.round((total / TOTAL_CURSOS) * 100);
+      document.getElementById("percentual-progresso").textContent = `${percentual}%`;
+      document.getElementById("preenchimento").style.width = `${percentual}%`;
+      document.getElementById("barra-progresso").setAttribute("aria-valuenow", String(total));
+
+      try {
+        const { cursos } = await carregarCursos();
+
+        // Sugestão do próximo curso (requisito 15)
+        const proximoId = Progresso.proximoCurso();
+        const caixaSugestao = document.getElementById("caixa-sugestao");
+        if (proximoId === null) {
+          caixaSugestao.innerHTML =
+            '<i class="fa-solid fa-trophy" aria-hidden="true"></i>' +
+            '<div><strong>Você concluiu todos os cursos!</strong>' +
+            '<p>Parabéns, agente! Agora teste seus conhecimentos no quiz geral.</p>' +
+            '<a class="botao" href="quiz.html">Fazer quiz geral</a></div>';
+        } else {
+          const proximo = cursos.find((c) => c.id === proximoId);
+          document.getElementById("sugestao-nome").textContent = proximo.titulo;
+          document.getElementById("sugestao-link").href = `curso.html?id=${proximo.id}`;
+          document.getElementById("sugestao-link").textContent = "Começar curso";
+        }
+
+        // Lista com checkmarks verdes (requisito 16)
+        const lista = document.getElementById("lista-conclusao");
+        const fragmento = document.createDocumentFragment();
+        for (const curso of cursos) {
+          const concluido = Progresso.estaConcluido(curso.id);
+          const item = document.createElement("li");
+          if (concluido) item.className = "concluido";
+          item.innerHTML = `
+            <span class="${concluido ? "check" : "pendente"}">
+              <i class="fa-solid ${concluido ? "fa-circle-check" : "fa-circle"}" aria-hidden="true"></i>
+            </span>
+            <span>${curso.titulo}</span>
+            <a href="curso.html?id=${curso.id}">${concluido ? "Revisar" : "Fazer"}</a>`;
+          fragmento.append(item);
+        }
+        lista.replaceChildren(fragmento);
+      } catch {
+        document.getElementById("lista-conclusao").innerHTML =
+          '<li class="erro-carregamento">Não foi possível carregar os cursos. Recarregue a página.</li>';
+      }
+
+      // Melhor pontuação do quiz geral
+      const melhor = Progresso.melhorQuizGeral();
+      document.getElementById("melhor-quiz").textContent =
+        melhor === null
+          ? "Você ainda não fez o quiz geral."
+          : `Sua melhor pontuação no quiz geral: ${melhor}/10.`;
+    }
+
+    montarPainel();
+  </script>
+</body>
+</html>

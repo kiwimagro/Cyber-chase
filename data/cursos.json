@@ -1,0 +1,442 @@
+{
+  "cursos": [
+    {
+      "id": 1,
+      "titulo": "Introdução à Cibersegurança",
+      "descricao_curta": "Entenda os conceitos básicos de segurança digital e por que ela importa no seu dia a dia.",
+      "descricao_longa": "Neste curso você vai aprender o que é cibersegurança, quais são as principais ameaças digitais, por que pessoas comuns são alvos de criminosos e o que fazer se algo der errado. Tudo em linguagem simples, sem jargões técnicos.",
+      "nivel": "Iniciante",
+      "duracao": "15 min",
+      "icone": "fa-shield-halved",
+      "video": "https://www.youtube-nocookie.com/embed/_bEa_D7cTLw",
+      "conteudo": [
+        "O que é cibersegurança?",
+        "Principais ameaças digitais",
+        "Por que você é um alvo?",
+        "O que fazer em caso de ataque"
+      ],
+      "quiz": [
+        {
+          "pergunta": "O que é cibersegurança?",
+          "opcoes": [
+            "Um tipo de antivírus",
+            "Práticas para proteger dados, dispositivos e contas",
+            "Um programa de computador",
+            "Uma rede social"
+          ],
+          "resposta": 1,
+          "explicacao": "Cibersegurança é o conjunto de práticas para proteger sistemas, redes, dispositivos e dados contra ataques digitais."
+        },
+        {
+          "pergunta": "Qual destas é uma ameaça digital comum?",
+          "opcoes": [
+            "Fotografia de viagem",
+            "E-mail de phishing",
+            "Receita de bolo",
+            "Jogo de celular offline"
+          ],
+          "resposta": 1,
+          "explicacao": "Phishing é um e-mail ou mensagem falsa que tenta enganar você para roubar seus dados. É uma das ameaças mais comuns."
+        },
+        {
+          "pergunta": "Por que criminosos atacam pessoas comuns, e não só empresas?",
+          "opcoes": [
+            "Porque pessoas comuns também têm dados e dinheiro valiosos",
+            "Por diversão apenas",
+            "Eles não atacam pessoas comuns",
+            "Para testar a velocidade da internet"
+          ],
+          "resposta": 0,
+          "explicacao": "Todo mundo tem contas, senhas e dados que valem dinheiro. Por isso, qualquer pessoa pode ser um alvo."
+        },
+        {
+          "pergunta": "Se você suspeitar que caiu em um golpe, qual é o primeiro passo?",
+          "opcoes": [
+            "Ignorar e seguir em frente",
+            "Compartilhar sua senha com um amigo",
+            "Avisar o banco e trocar as senhas importantes",
+            "Apagar todos os seus e-mails"
+          ],
+          "resposta": 2,
+          "explicacao": "Agir rápido é essencial: avise bancos e operadoras, troque as senhas afetadas e registre um boletim de ocorrência, se necessário."
+        },
+        {
+          "pergunta": "Qual atitude ajuda a proteger seus dados no dia a dia?",
+          "opcoes": [
+            "Usar a mesma senha em tudo",
+            "Manter aplicativos e sistema sempre atualizados",
+            "Clicar em links de desconhecidos",
+            "Desativar as atualizações automáticas"
+          ],
+          "resposta": 1,
+          "explicacao": "Atualizações corrigem falhas de segurança. Manter tudo atualizado é uma das formas mais simples de se proteger."
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "titulo": "Phishing e Engenharia Social",
+      "descricao_curta": "Aprenda a identificar e-mails e mensagens falsas que tentam roubar seus dados.",
+      "descricao_longa": "Neste curso você vai entender como funciona o phishing, ver exemplos reais de golpes que imitam banco, Correios e Netflix, aprender a verificar o remetente de uma mensagem e saber o que fazer se cair em uma armadilha.",
+      "nivel": "Iniciante",
+      "duracao": "20 min",
+      "icone": "fa-envelope-open-text",
+      "video": "https://www.youtube-nocookie.com/embed/jmdeLWhojVA",
+      "conteudo": [
+        "O que é phishing?",
+        "Exemplos reais: Banco, Correios, Netflix",
+        "Como verificar o remetente",
+        "O que fazer se cair em um golpe"
+      ],
+      "quiz": [
+        {
+          "pergunta": "O que é phishing?",
+          "opcoes": [
+            "Um tipo de peixe",
+            "Golpe que finge ser uma empresa para roubar seus dados",
+            "Um programa de segurança",
+            "Uma rede Wi-Fi segura"
+          ],
+          "resposta": 1,
+          "explicacao": "Phishing é um golpe em que criminosos imitam empresas conhecidas para enganar você e roubar dados pessoais ou financeiros."
+        },
+        {
+          "pergunta": "Você recebe um e-mail do 'seu banco' pedindo para clicar em um link e confirmar sua senha. O que fazer?",
+          "opcoes": [
+            "Clicar rápido para resolver logo",
+            "Responder o e-mail com seus dados",
+            "Não clicar e contatar o banco pelos canais oficiais",
+            "Encaminhar o e-mail para os amigos"
+          ],
+          "resposta": 2,
+          "explicacao": "Bancos nunca pedem senha por e-mail. Sempre confirme pelo aplicativo ou telefone oficial antes de agir."
+        },
+        {
+          "pergunta": "Qual destes é um sinal de alerta de e-mail falso?",
+          "opcoes": [
+            "Endereço do remetente estranho e erros de escrita",
+            "O logotipo da empresa",
+            "Seu nome escrito no e-mail",
+            "Mensagem sem anexos"
+          ],
+          "resposta": 0,
+          "explicacao": "Erros de escrita, endereços de remetente esquisitos e urgência exagerada são sinais clássicos de mensagem falsa."
+        },
+        {
+          "pergunta": "O que é engenharia social?",
+          "opcoes": [
+            "Técnica de manipulação para enganar pessoas e obter informações",
+            "Um curso de engenharia civil",
+            "Um tipo de rede social",
+            "Uma atualização de software"
+          ],
+          "resposta": 0,
+          "explicacao": "Engenharia social é quando o criminoso usa conversa, pressa e emoção para convencer a vítima a entregar dados por conta própria."
+        },
+        {
+          "pergunta": "Você caiu em um phishing e passou seus dados. O que fazer agora?",
+          "opcoes": [
+            "Nada, já aconteceu",
+            "Trocar senhas e avisar bancos e operadoras",
+            "Apagar o e-mail e esquecer",
+            "Comprar um celular novo"
+          ],
+          "resposta": 1,
+          "explicacao": "Quanto antes você avisar o banco e trocar as senhas, menor o estrago. Também vale registrar um boletim de ocorrência."
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "titulo": "LGPD e Proteção de Dados",
+      "descricao_curta": "Conheça seus direitos segundo a LGPD e aprenda a proteger suas informações pessoais.",
+      "descricao_longa": "Neste curso você vai descobrir o que é a Lei Geral de Proteção de Dados (LGPD), quais são os seus direitos como titular de dados, como as empresas devem tratar suas informações e dicas práticas para proteger seus dados pessoais.",
+      "nivel": "Intermediário",
+      "duracao": "20 min",
+      "icone": "fa-user-shield",
+      "video": "https://www.youtube-nocookie.com/embed/M-ETuNbmJN4",
+      "conteudo": [
+        "O que é a LGPD",
+        "Seus direitos como titular de dados",
+        "Como as empresas devem tratar seus dados",
+        "Dicas para proteger suas informações"
+      ],
+      "quiz": [
+        {
+          "pergunta": "O que significa a sigla LGPD?",
+          "opcoes": [
+            "Lei Geral de Proteção de Dados",
+            "Liga Geral de Privacidade Digital",
+            "Lei de Garantia de Produtos Digitais",
+            "Lógica Geral de Programação de Dados"
+          ],
+          "resposta": 0,
+          "explicacao": "LGPD significa Lei Geral de Proteção de Dados (Lei nº 13.709/2018) e define regras para o uso dos seus dados pessoais."
+        },
+        {
+          "pergunta": "Quem a LGPD protege?",
+          "opcoes": [
+            "Apenas empresas",
+            "Todas as pessoas físicas, titulares de dados pessoais",
+            "Somente bancos",
+            "Apenas menores de idade"
+          ],
+          "resposta": 1,
+          "explicacao": "A LGPD protege qualquer pessoa cujos dados sejam tratados por empresas ou órgãos públicos no Brasil."
+        },
+        {
+          "pergunta": "O que é um dado pessoal?",
+          "opcoes": [
+            "Qualquer informação que identifique uma pessoa, como nome e CPF",
+            "Apenas a senha do banco",
+            "Apenas o número de telefone",
+            "Somente dados de empresas"
+          ],
+          "resposta": 0,
+          "explicacao": "Dado pessoal é qualquer informação que permite identificar alguém: nome, CPF, e-mail, endereço, fotos e até hábitos de consumo."
+        },
+        {
+          "pergunta": "Você pediu para uma loja excluir seus dados e ela se recusou. O que você pode fazer?",
+          "opcoes": [
+            "Aceitar calado",
+            "Registrar reclamação junto à ANPD",
+            "Pagar uma taxa para excluir",
+            "Criar outra conta"
+          ],
+          "resposta": 1,
+          "explicacao": "A ANPD (Autoridade Nacional de Proteção de Dados) é o órgão que fiscaliza a LGPD e recebe reclamações dos titulares de dados."
+        },
+        {
+          "pergunta": "Qual é uma boa prática para proteger seus dados pessoais?",
+          "opcoes": [
+            "Compartilhar tudo nas redes sociais",
+            "Ler o que os aplicativos pedem e autorizar só o necessário",
+            "Usar senhas fáceis de lembrar",
+            "Deixar o celular desbloqueado"
+          ],
+          "resposta": 1,
+          "explicacao": "Antes de instalar um aplicativo, veja quais permissões ele pede. Se pedir mais do que precisa (como contatos para um app de lanterna), desconfie."
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "titulo": "Segurança em Redes",
+      "descricao_curta": "Use Wi-Fi com segurança, entenda o que é VPN e navegue na internet sem riscos.",
+      "descricao_longa": "Neste curso você vai aprender os riscos do Wi-Fi público, descobrir o que é e para que serve uma VPN, entender como navegar com segurança e tomar cuidados com o Bluetooth do seu celular.",
+      "nivel": "Intermediário",
+      "duracao": "20 min",
+      "icone": "fa-wifi",
+      "video": "https://www.youtube-nocookie.com/embed/S1GxjSVUHds",
+      "conteudo": [
+        "Wi-Fi público x privado",
+        "O que é VPN",
+        "Navegação segura e anônima",
+        "Cuidados com Bluetooth"
+      ],
+      "quiz": [
+        {
+          "pergunta": "Qual é o principal risco de usar Wi-Fi público aberto?",
+          "opcoes": [
+            "Gastar a bateria do celular",
+            "Outras pessoas podem interceptar seus dados",
+            "Deixar o celular lento",
+            "Perder as fotos salvas"
+          ],
+          "resposta": 1,
+          "explicacao": "Em redes abertas, criminosos podem interceptar o que você envia e recebe. Evite acessar bancos e e-mails nessas redes."
+        },
+        {
+          "pergunta": "O que uma VPN faz?",
+          "opcoes": [
+            "Cria um túnel criptografado para a sua navegação",
+            "Aumenta a velocidade da internet",
+            "Conserta o celular",
+            "Bloqueia todos os vírus"
+          ],
+          "resposta": 0,
+          "explicacao": "VPN é uma rede privada virtual: ela criptografa sua conexão, dificultando que outras pessoas espionem o que você faz online."
+        },
+        {
+          "pergunta": "Ao usar Wi-Fi público, qual é a atitude mais segura?",
+          "opcoes": [
+            "Acessar contas bancárias normalmente",
+            "Navegar apenas em sites com 'https' e usar VPN",
+            "Baixar qualquer aplicativo",
+            "Compartilhar senhas com desconhecidos"
+          ],
+          "resposta": 1,
+          "explicacao": "O 'https' (cadeado no endereço) criptografa a página, e a VPN protege toda a conexão. Juntos, reduzem bastante o risco."
+        },
+        {
+          "pergunta": "Qual é um bom cuidado com o Bluetooth?",
+          "opcoes": [
+            "Manter sempre ligado e visível para todos",
+            "Aceitar qualquer pedido de conexão",
+            "Desligar quando não estiver usando",
+            "Conectar em aparelhos desconhecidos"
+          ],
+          "resposta": 2,
+          "explicacao": "Bluetooth ligado e visível permite ataques de proximidade. Desligue quando não usar e nunca aceite conexões desconhecidas."
+        },
+        {
+          "pergunta": "O que significa o cadeado ao lado do endereço de um site?",
+          "opcoes": [
+            "O site é pago",
+            "A conexão é criptografada (https)",
+            "O site é muito famoso",
+            "O site não tem anúncios"
+          ],
+          "resposta": 1,
+          "explicacao": "O cadeado indica que a conexão usa https, ou seja, os dados trocados com o site são criptografados. Prefira sempre sites com cadeado."
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "titulo": "Boas Práticas de Senhas",
+      "descricao_curta": "Crie senhas fortes e aprenda a gerenciá-las sem precisar decorar tudo.",
+      "descricao_longa": "Neste curso você vai aprender a criar senhas fortes e fáceis de lembrar, descobrir o que é um gerenciador de senhas, entender a autenticação em dois fatores (2FA) e receber dicas práticas de segurança.",
+      "nivel": "Iniciante",
+      "duracao": "15 min",
+      "icone": "fa-key",
+      "video": "https://www.youtube-nocookie.com/embed/sRaSLU1Saso",
+      "conteudo": [
+        "Como criar senhas fortes",
+        "O que é um gerenciador de senhas",
+        "Autenticação em dois fatores (2FA)",
+        "Dicas de segurança"
+      ],
+      "quiz": [
+        {
+          "pergunta": "Qual destes é um exemplo de senha forte?",
+          "opcoes": [
+            "123456",
+            "Sua data de nascimento",
+            "Uma frase longa com números e símbolos",
+            "O nome do seu animal de estimação"
+          ],
+          "resposta": 2,
+          "explicacao": "Senhas fortes são longas e misturam letras, números e símbolos. Uma frase fácil de lembrar, como 'Eu@moCaf3ComPao!', já é muito melhor."
+        },
+        {
+          "pergunta": "O que é um gerenciador de senhas?",
+          "opcoes": [
+            "Um aplicativo que guarda e gera senhas fortes",
+            "Uma rede social",
+            "Um jogo de celular",
+            "Um tipo de antivírus"
+          ],
+          "resposta": 0,
+          "explicacao": "O gerenciador guarda todas as suas senhas em um cofre criptografado: você só precisa lembrar de uma senha mestra."
+        },
+        {
+          "pergunta": "O que é autenticação em dois fatores (2FA)?",
+          "opcoes": [
+            "Uma segunda camada de segurança, como um código enviado ao celular",
+            "Duas senhas iguais",
+            "Dois e-mails diferentes",
+            "Um segundo celular para emergências"
+          ],
+          "resposta": 0,
+          "explicacao": "Com 2FA, além da senha você precisa de um segundo fator (código, biometria), dificultando o acesso mesmo se a senha vazar."
+        },
+        {
+          "pergunta": "É seguro usar a mesma senha em vários sites?",
+          "opcoes": [
+            "Sim, é mais fácil de lembrar",
+            "Não, se um site vazar, todas as suas contas ficam em risco",
+            "Sim, desde que a senha seja forte",
+            "Tanto faz"
+          ],
+          "resposta": 1,
+          "explicacao": "Se um site for invadido e sua senha vazar, os criminosos testam essa mesma senha em outros serviços. Use senhas diferentes para cada conta."
+        },
+        {
+          "pergunta": "Quando você deve trocar uma senha importante?",
+          "opcoes": [
+            "Nunca",
+            "Quando houver vazamento ou suspeita de invasão",
+            "Todo dia",
+            "A cada hora"
+          ],
+          "resposta": 1,
+          "explicacao": "Especialistas recomendam trocar a senha quando há suspeita de vazamento ou invasão, em vez de trocas constantes que incentivam senhas fracas."
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "titulo": "Como Identificar Golpes",
+      "descricao_curta": "Conheça os golpes mais comuns no Brasil: Pix falso, boleto falso, falso sequestro e mais.",
+      "descricao_longa": "Neste curso você vai conhecer os golpes mais comuns no Brasil, aprender a reconhecer os sinais de alerta, descobrir como verificar antes de fazer qualquer pagamento e saber onde denunciar crimes cibernéticos.",
+      "nivel": "Intermediário",
+      "duracao": "20 min",
+      "icone": "fa-triangle-exclamation",
+      "video": "https://www.youtube-nocookie.com/embed/-Bwii0DYovo",
+      "conteudo": [
+        "Golpes mais comuns no Brasil",
+        "Sinais de alerta",
+        "Como verificar antes de pagar",
+        "Onde denunciar"
+      ],
+      "quiz": [
+        {
+          "pergunta": "Qual destes é um golpe comum no Brasil?",
+          "opcoes": [
+            "Pix falso de parente pedindo dinheiro",
+            "Sorteio real de loja oficial",
+            "Cupom de desconto de loja física",
+            "Extrato enviado pelo banco"
+          ],
+          "resposta": 0,
+          "explicacao": "No 'golpe do Pix', criminosos se passam por parentes em números novos e pedem transferências urgentes. Sempre confirme por ligação."
+        },
+        {
+          "pergunta": "Você recebe uma mensagem de um 'filho' pedindo dinheiro urgente. O que fazer?",
+          "opcoes": [
+            "Transferir imediatamente",
+            "Ligar para o número conhecido dele e confirmar",
+            "Responder a mensagem com seus dados",
+            "Compartilhar no grupo da família"
+          ],
+          "resposta": 1,
+          "explicacao": "Antes de qualquer transferência, ligue para o número antigo da pessoa e confirme. Golpistas contam com a pressa da vítima."
+        },
+        {
+          "pergunta": "Antes de pagar um boleto, o que você deve conferir?",
+          "opcoes": [
+            "Se o nome do beneficiário confere com a empresa",
+            "A cor do boleto",
+            "Se o logotipo é bonito",
+            "A data de vencimento apenas"
+          ],
+          "resposta": 0,
+          "explicacao": "Confira sempre quem recebe o dinheiro: o nome do beneficiário deve ser exatamente o da empresa. Boletos com beneficiário diferente são sinal de fraude."
+        },
+        {
+          "pergunta": "Onde você pode denunciar um golpe?",
+          "opcoes": [
+            "Na delegacia (presencial ou online) e nos canais do banco",
+            "Nas redes sociais do golpista",
+            "Não é possível denunciar",
+            "Apenas para amigos e parentes"
+          ],
+          "resposta": 0,
+          "explicacao": "Registre boletim de ocorrência (inclusive online, em muitos estados), avise o banco e denuncie o número ou perfil na própria plataforma."
+        },
+        {
+          "pergunta": "Uma 'promoção imperdível' pede Pix imediato para conta de pessoa física. Qual é o sinal de alerta?",
+          "opcoes": [
+            "Preço bom demais, urgência e conta de pessoa física",
+            "O site da loja é bonito",
+            "A loja tem avaliações positivas",
+            "A loja aceita cartão de crédito"
+          ],
+          "resposta": 0,
+          "explicacao": "Desconfie de preço muito abaixo do mercado, pressão para pagar rápido e Pix para contas de pessoas físicas. Empresas sérias não agem assim."
+        }
+      ]
+    }
+  ]
+}

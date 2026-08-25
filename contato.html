@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-tema="escuro">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Entre em contato com a equipe do Cyber Chase.">
+  <title>Contato — Cyber Chase</title>
+  <link rel="icon" type="image/svg+xml" href="assets/img/logo.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  <script>
+    try {
+      if (localStorage.getItem("cc_tema") === "claro") document.documentElement.setAttribute("data-tema", "claro");
+      if (localStorage.getItem("cc_leitura") === "ativo") document.documentElement.classList.add("modo-leitura");
+    } catch (e) { /* usa o padrão escuro */ }
+  </script>
+</head>
+<body>
+  <a class="pular-conteudo" href="#conteudo">Pular para o conteúdo</a>
+
+  <!-- ========================= CABEÇALHO ========================= -->
+  <header class="cabecalho">
+    <div class="conteiner cabecalho-interno">
+      <a class="logo" href="index.html">
+        <img src="assets/img/logo.svg" alt="Escudo do Cyber Chase">
+        <span>Cyber Chase</span>
+      </a>
+      <nav class="navegacao" aria-label="Navegação principal">
+        <ul>
+          <li><a href="index.html">Início</a></li>
+          <li><a href="cursos.html">Cursos</a></li>
+          <li><a href="quiz.html">Quiz Geral</a></li>
+          <li><a href="dashboard.html">Meu Progresso</a></li>
+          <li><a href="sobre.html">Sobre</a></li>
+          <li><a href="contato.html" aria-current="page">Contato</a></li>
+        </ul>
+      </nav>
+      <div class="acoes-cabecalho">
+        <button class="botao-icone botao-leitura" type="button" aria-label="Ativar modo de leitura" aria-pressed="false" title="Modo de leitura">
+          <i class="fa-solid fa-text-height" aria-hidden="true"></i>
+        </button>
+        <button class="botao-icone botao-tema" type="button" aria-label="Ativar tema claro" title="Alternar tema">
+          <i class="fa-solid fa-moon" aria-hidden="true"></i>
+        </button>
+        <button class="botao-icone botao-menu" type="button" aria-expanded="false" aria-label="Abrir menu">
+          <i class="fa-solid fa-bars" aria-hidden="true"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="conteudo">
+    <section class="secao">
+      <div class="conteiner">
+        <h1 class="titulo-secao">Fale com a gente</h1>
+        <p class="subtitulo-secao">Dúvidas, sugestões ou histórias para compartilhar? Escreva para nós!</p>
+
+        <!-- Formulário demonstrativo: não envia de verdade (requisito 18) -->
+        <form class="formulario" novalidate>
+          <div class="campo">
+            <label for="nome">Nome</label>
+            <input type="text" id="nome" name="nome" placeholder="Seu nome completo" required>
+            <span class="erro-campo">Por favor, informe seu nome.</span>
+          </div>
+          <div class="campo">
+            <label for="email">E-mail</label>
+            <input type="email" id="email" name="email" placeholder="voce@exemplo.com" required>
+            <span class="erro-campo">Informe um e-mail válido.</span>
+          </div>
+          <div class="campo">
+            <label for="mensagem">Mensagem</label>
+            <textarea id="mensagem" name="mensagem" rows="5" placeholder="Escreva sua mensagem…" required></textarea>
+            <span class="erro-campo">Por favor, escreva sua mensagem.</span>
+          </div>
+          <button class="botao" type="submit"><i class="fa-solid fa-paper-plane" aria-hidden="true"></i> Enviar mensagem</button>
+        </form>
+
+        <!-- Mensagem de sucesso exibida após o envio -->
+        <p class="mensagem-sucesso" role="status" aria-live="polite"></p>
+      </div>
+    </section>
+  </main>
+
+  <!-- ========================== RODAPÉ ========================== -->
+  <footer class="rodape">
+    <div class="conteiner rodape-interno">
+      <p><strong>Cyber Chase</strong><br><small>Sua segurança começa aqui.</small></p>
+      <nav aria-label="Links do rodapé">
+        <ul>
+          <li><a href="sobre.html">Sobre</a></li>
+          <li><a href="contato.html">Contato</a></li>
+          <li><a href="sobre.html#privacidade">Política de Privacidade</a></li>
+        </ul>
+      </nav>
+      <small>© <span class="ano-atual">2026</span> Cyber Chase — Conteúdo educativo e gratuito.</small>
+    </div>
+  </footer>
+
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>

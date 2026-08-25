@@ -1,0 +1,16 @@
+# Arquivos de sistema operacional
+.DS_Store
+Thumbs.db
+
+# Editores/IDEs
+.vscode/
+.idea/
+
+# Perfis temporários de navegador (usados em testes locais)
+.chrome-profile/
+
+# Variáveis de ambiente locais (ex.: CYBER_CHASE_PORT)
+.env
+
+# Logs
+*.log

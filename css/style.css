@@ -1,0 +1,577 @@
+/* ==========================================================================
+   CYBER CHASE — ESTILOS GLOBAIS
+   Organização:
+   1. Variáveis (tokens de design) e temas
+   2. Reset e base
+   3. Utilitários e componentes genéricos (botões, cards, badges)
+   4. Cabeçalho e navegação
+   5. Hero e seções da página inicial
+   6. Lista de cursos (cursos.html)
+   7. Página do curso (curso.html) e quiz
+   8. Quiz geral (quiz.html)
+   9. Dashboard
+   10. Sobre e Contato
+   11. Página 404
+   12. Rodapé
+   13. Modo de leitura (acessibilidade)
+   14. Responsividade (breakpoints)
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. VARIÁVEIS E TEMAS
+   Tokens únicos: nenhum componente pode usar cor "chumbada", só variáveis.
+   -------------------------------------------------------------------------- */
+:root {
+  /* Paleta oficial (requirements.md seção 6) */
+  --fundo: #0a1628;          /* fundo principal (azul escuro)   */
+  --fundo-2: #111d33;        /* fundo secundário (cards)        */
+  --texto: #ffffff;          /* texto principal                 */
+  --texto-2: #b0c4de;        /* texto secundário (cinza claro)  */
+  --primaria: #6c3bcb;       /* botões primários (roxo)         */
+  --primaria-hover: #8b5cf6; /* roxo claro (hover)              */
+  --destaque: #22d3ee;       /* cor de destaque (ciano)         */
+  --sucesso: #34d399;        /* sucesso/concluído (verde)       */
+  --erro: #ef4444;           /* alerta/erro (vermelho)          */
+
+  /* Derivados (para bordas, sobreposições e sombras) */
+  --borda: rgba(176, 196, 222, 0.18);
+  --sombra: 0 8px 24px rgba(0, 0, 0, 0.35);
+  --raio: 14px;              /* arredondamento padrão */
+
+  /* Tipografia */
+  --fonte-texto: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --fonte-titulo: "Poppins", var(--fonte-texto);
+  --tamanho-base: 16px;
+  --tamanho-line: 1.6;
+}
+
+/* Tema claro (opcional, desativado por padrão — requisito 22) */
+[data-tema="claro"] {
+  --fundo: #f4f7fb;
+  --fundo-2: #ffffff;
+  --texto: #0a1628;
+  --texto-2: #3d4f6b;
+  --primaria: #6c3bcb;
+  --primaria-hover: #5a2fb5;
+  --destaque: #0891b2;
+  --borda: rgba(10, 22, 40, 0.12);
+  --sombra: 0 8px 24px rgba(10, 22, 40, 0.12);
+}
+
+/* --------------------------------------------------------------------------
+   2. RESET E BASE
+   -------------------------------------------------------------------------- */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; } /* rolagem suave (requisito 30) */
+
+/* Respeita usuários que preferem menos movimento */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { transition: none !important; animation: none !important; }
+}
+
+body {
+  font-family: var(--fonte-texto);
+  font-size: var(--tamanho-base);
+  line-height: var(--tamanho-line);
+  color: var(--texto);
+  background-color: var(--fundo);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  /* Deixa o rodapé colado no fim da página mesmo em telas curtas */
+}
+
+main { flex: 1; }
+
+img { max-width: 100%; display: block; }
+
+a { color: var(--destaque); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+h1, h2, h3 { font-family: var(--fonte-titulo); line-height: 1.25; }
+
+/* Link "pular para o conteúdo" (acessibilidade por teclado) */
+.pular-conteudo {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  background: var(--primaria);
+  color: #fff;
+  padding: 0.75rem 1.25rem;
+  border-radius: 0 0 var(--raio) 0;
+  z-index: 100;
+}
+.pular-conteudo:focus { left: 0; }
+
+/* Contorno visível para navegação por teclado */
+:focus-visible { outline: 3px solid var(--destaque); outline-offset: 2px; }
+
+/* --------------------------------------------------------------------------
+   3. UTILITÁRIOS E COMPONENTES GENÉRICOS
+   -------------------------------------------------------------------------- */
+.conteiner { width: min(1120px, 100% - 2.5rem); margin-inline: auto; }
+
+.secao { padding-block: 3rem; }
+
+.titulo-secao { font-size: 1.75rem; margin-bottom: 0.5rem; }
+.subtitulo-secao { color: var(--texto-2); margin-bottom: 2rem; max-width: 60ch; }
+
+/* Botões */
+.botao {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.85rem 1.75rem;
+  border: none;
+  border-radius: 999px;
+  background: var(--primaria);
+  color: #fff;
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.15s;
+}
+.botao:hover { background: var(--primaria-hover); transform: translateY(-2px); text-decoration: none; }
+.botao:active { transform: translateY(0); }
+.botao:disabled { opacity: 0.45; cursor: not-allowed; transform: none; }
+
+.botao-secundario { background: transparent; border: 2px solid var(--primaria); color: var(--texto); }
+.botao-secundario:hover { background: var(--primaria); color: #fff; }
+
+.botao-sucesso { background: var(--sucesso); color: #052e1c; }
+.botao-sucesso:hover { background: var(--sucesso); filter: brightness(1.08); }
+
+/* Badges (nível do curso, selos etc.) */
+.badge {
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  background: rgba(108, 59, 203, 0.25);
+  color: #c4b5fd;
+}
+[data-tema="claro"] .badge { color: #5a2fb5; background: rgba(108, 59, 203, 0.12); }
+.badge-iniciante { background: rgba(34, 211, 238, 0.16); color: var(--destaque); }
+.badge-sucesso { background: rgba(52, 211, 153, 0.16); color: var(--sucesso); }
+
+/* Cards genéricos */
+.card {
+  background: var(--fundo-2);
+  border: 1px solid var(--borda);
+  border-radius: var(--raio);
+  padding: 1.5rem;
+  box-shadow: var(--sombra);
+}
+
+/* --------------------------------------------------------------------------
+   4. CABEÇALHO E NAVEGAÇÃO
+   -------------------------------------------------------------------------- */
+.cabecalho {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: rgba(10, 22, 40, 0.85);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--borda);
+}
+[data-tema="claro"] .cabecalho { background: rgba(244, 247, 251, 0.9); }
+
+.cabecalho-interno {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-block: 0.75rem;
+}
+
+.logo { display: flex; align-items: center; gap: 0.6rem; font-family: var(--fonte-titulo); font-weight: 700; font-size: 1.25rem; color: var(--texto); }
+.logo:hover { text-decoration: none; }
+.logo img { width: 38px; height: 38px; }
+
+.navegacao ul { display: flex; gap: 0.25rem; list-style: none; flex-wrap: wrap; }
+.navegacao a {
+  display: block;
+  padding: 0.5rem 0.9rem;
+  border-radius: 999px;
+  color: var(--texto-2);
+  font-weight: 500;
+}
+.navegacao a:hover { color: var(--texto); background: rgba(176, 196, 222, 0.1); text-decoration: none; }
+.navegacao a[aria-current="page"] { color: var(--destaque); background: rgba(34, 211, 238, 0.12); }
+
+.acoes-cabecalho { display: flex; gap: 0.5rem; align-items: center; }
+
+.botao-icone {
+  background: transparent;
+  border: 1px solid var(--borda);
+  border-radius: 999px;
+  color: var(--texto);
+  width: 42px;
+  height: 42px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background 0.2s;
+}
+.botao-icone:hover { background: rgba(176, 196, 222, 0.12); }
+
+/* Botão hambúrguer (mobile) — escondido no desktop */
+.botao-menu { display: none; }
+
+/* --------------------------------------------------------------------------
+   5. HERO E SEÇÕES DA PÁGINA INICIAL
+   -------------------------------------------------------------------------- */
+.hero {
+  text-align: center;
+  padding-block: 4rem 3rem;
+  background:
+    radial-gradient(600px 300px at 50% -10%, rgba(108, 59, 203, 0.35), transparent 70%),
+    var(--fundo);
+}
+.hero .slogan { color: var(--destaque); font-weight: 600; letter-spacing: 0.04em; margin-bottom: 1rem; }
+.hero h1 { font-size: clamp(1.9rem, 5vw, 3rem); max-width: 18ch; margin-inline: auto; }
+.hero p { color: var(--texto-2); max-width: 55ch; margin: 1rem auto 2rem; font-size: 1.1rem; }
+
+.estatisticas { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 1rem; }
+.estatistica { text-align: center; padding: 1.5rem 1rem; }
+.estatistica strong { display: block; font-size: 2rem; color: var(--destaque); font-family: var(--fonte-titulo); }
+.estatistica span { color: var(--texto-2); }
+
+/* Depoimentos */
+.depoimentos { display: grid; gap: 1.25rem; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
+.depoimento blockquote { color: var(--texto-2); font-style: italic; margin-bottom: 1rem; }
+.depoimento footer { display: flex; align-items: center; gap: 0.75rem; }
+
+.avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  color: #fff;
+  flex-shrink: 0;
+  background: linear-gradient(135deg, var(--primaria), var(--destaque));
+}
+.depoimento strong { display: block; }
+.depoimento small { color: var(--texto-2); }
+
+/* Chamada final (CTA antes do rodapé) */
+.chamada-final { text-align: center; background: var(--fundo-2); border-block: 1px solid var(--borda); }
+
+/* --------------------------------------------------------------------------
+   6. LISTA DE CURSOS (cursos.html)
+   -------------------------------------------------------------------------- */
+.grade-cursos { display: grid; gap: 1.25rem; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); }
+
+.card-curso {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  transition: transform 0.2s, border-color 0.2s;
+  color: var(--texto);
+}
+.card-curso:hover { transform: translateY(-4px); border-color: var(--primaria); text-decoration: none; }
+
+.icone-curso {
+  width: 56px;
+  height: 56px;
+  border-radius: var(--raio);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  color: var(--destaque);
+  background: rgba(34, 211, 238, 0.12);
+}
+
+.card-curso h3 { font-size: 1.15rem; }
+.card-curso p { color: var(--texto-2); font-size: 0.95rem; flex-grow: 1; }
+
+.meta-curso { display: flex; gap: 0.75rem; align-items: center; font-size: 0.85rem; color: var(--texto-2); }
+.meta-curso i { color: var(--destaque); }
+
+.concluido-marcador { color: var(--sucesso); font-weight: 600; font-size: 0.9rem; }
+
+/* --------------------------------------------------------------------------
+   7. PÁGINA DO CURSO (curso.html) E QUIZ
+   -------------------------------------------------------------------------- */
+.cabecalho-curso { padding-block: 2.5rem 1.5rem; }
+.cabecalho-curso .meta-curso { margin-block: 0.75rem; }
+
+.estrutura-curso { display: grid; gap: 2rem; grid-template-columns: 1fr; }
+
+.topicos-lista { list-style: none; display: grid; gap: 0.6rem; margin-top: 1rem; }
+.topicos-lista li {
+  display: flex;
+  gap: 0.75rem;
+  align-items: flex-start;
+  background: var(--fundo-2);
+  border: 1px solid var(--borda);
+  border-radius: var(--raio);
+  padding: 0.85rem 1rem;
+}
+.topicos-lista i { color: var(--sucesso); margin-top: 0.2rem; }
+
+/* Vídeo com fachada: o iframe só é injetado após o clique (performance) */
+.video-fachada {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  border-radius: var(--raio);
+  overflow: hidden;
+  background: linear-gradient(135deg, var(--primaria), #0a1628 70%);
+  cursor: pointer;
+  border: 1px solid var(--borda);
+}
+.video-fachada .titulo-video {
+  position: absolute;
+  inset: auto 0 0 0;
+  padding: 2.5rem 1.25rem 1.25rem;
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.85));
+  font-family: var(--fonte-titulo);
+  font-weight: 600;
+}
+.video-fachada .botao-play {
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  width: 74px;
+  height: 74px;
+  border-radius: 50%;
+  border: none;
+  background: var(--primaria);
+  color: #fff;
+  font-size: 1.6rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s, background 0.2s;
+}
+.video-fachada:hover .botao-play { transform: scale(1.1); background: var(--primaria-hover); }
+.video-fachada iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+
+/* Quiz embutido na página do curso */
+.quiz { margin-top: 1.5rem; }
+.quiz-pergunta { font-size: 1.2rem; margin-bottom: 1rem; }
+.quiz-progresso { color: var(--texto-2); font-size: 0.9rem; margin-bottom: 1rem; }
+
+.opcoes { display: grid; gap: 0.6rem; }
+.opcao {
+  text-align: left;
+  padding: 0.9rem 1.1rem;
+  border-radius: var(--raio);
+  border: 1px solid var(--borda);
+  background: var(--fundo-2);
+  color: var(--texto);
+  font-family: inherit;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: border-color 0.15s, background 0.15s;
+}
+.opcao:hover:not(:disabled) { border-color: var(--primaria); }
+.opcao:disabled { cursor: default; opacity: 0.85; }
+
+.opcao-correta { border-color: var(--sucesso) !important; background: rgba(52, 211, 153, 0.14) !important; }
+.opcao-errada { border-color: var(--erro) !important; background: rgba(239, 68, 68, 0.14) !important; }
+
+.feedback {
+  margin-top: 1rem;
+  padding: 1rem 1.25rem;
+  border-radius: var(--raio);
+  border-left: 4px solid;
+}
+.feedback-acerto { border-color: var(--sucesso); background: rgba(52, 211, 153, 0.12); }
+.feedback-erro { border-color: var(--erro); background: rgba(239, 68, 68, 0.12); }
+.feedback strong { display: block; margin-bottom: 0.3rem; }
+.feedback .botao { margin-top: 0.75rem; }
+
+/* Mensagem de erro ao carregar dados (cursos/perguntas) */
+.erro-carregamento {
+  padding: 1rem 1.25rem;
+  border-radius: var(--raio);
+  border: 1px solid var(--erro);
+  background: rgba(239, 68, 68, 0.12);
+  color: var(--texto);
+}
+
+.resultado-quiz { text-align: center; padding: 1.5rem 1rem; }
+.resultado-quiz .pontuacao { font-size: 2.6rem; font-family: var(--fonte-titulo); color: var(--destaque); }
+.resultado-quiz .mensagem { color: var(--texto-2); margin-block: 0.5rem 1.25rem; }
+
+/* Selo de conclusão do curso */
+.selo-conclusao {
+  display: none;
+  align-items: center;
+  gap: 0.75rem;
+  margin-top: 1.25rem;
+  padding: 1rem 1.25rem;
+  border-radius: var(--raio);
+  border: 2px dashed var(--sucesso);
+  background: rgba(52, 211, 153, 0.1);
+  color: var(--sucesso);
+  font-weight: 600;
+}
+.selo-conclusao.visivel { display: flex; }
+.selo-conclusao i { font-size: 1.6rem; }
+
+/* --------------------------------------------------------------------------
+   8. QUIZ GERAL (quiz.html)
+   -------------------------------------------------------------------------- */
+.quiz-intro { text-align: center; max-width: 560px; margin-inline: auto; }
+.quiz-intro .estatistica-quiz { display: flex; gap: 1rem; justify-content: center; margin-block: 1.25rem; }
+
+/* --------------------------------------------------------------------------
+   9. DASHBOARD
+   -------------------------------------------------------------------------- */
+.painel-progresso { margin-bottom: 1.5rem; }
+.painel-progresso .rotulo { display: flex; justify-content: space-between; color: var(--texto-2); margin-bottom: 0.5rem; }
+
+.barra-progresso {
+  height: 14px;
+  border-radius: 999px;
+  background: var(--fundo-2);
+  border: 1px solid var(--borda);
+  overflow: hidden;
+}
+.barra-progresso .preenchimento {
+  height: 100%;
+  width: 0%;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--primaria), var(--destaque));
+  transition: width 0.6s ease;
+}
+
+.sugestao { display: flex; gap: 1rem; align-items: center; border-left: 4px solid var(--destaque); }
+.sugestao i { font-size: 1.8rem; color: var(--destaque); }
+.sugestao p { color: var(--texto-2); margin-block: 0.3rem; }
+
+.lista-conclusao { list-style: none; display: grid; gap: 0.6rem; }
+.lista-conclusao li {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  background: var(--fundo-2);
+  border: 1px solid var(--borda);
+  border-radius: var(--raio);
+  padding: 0.85rem 1rem;
+}
+.lista-conclusao li.concluido { border-color: rgba(52, 211, 153, 0.4); }
+.lista-conclusao .check { color: var(--sucesso); font-size: 1.2rem; }
+.lista-conclusao .pendente { color: var(--texto-2); opacity: 0.5; }
+.lista-conclusao a { margin-left: auto; font-size: 0.9rem; }
+
+/* --------------------------------------------------------------------------
+   10. SOBRE E CONTATO
+   -------------------------------------------------------------------------- */
+.prosa p { margin-bottom: 1rem; color: var(--texto-2); max-width: 70ch; }
+.prosa h2 { margin: 2rem 0 0.75rem; font-size: 1.4rem; }
+.prosa ul { margin: 0 0 1rem 1.25rem; color: var(--texto-2); }
+.prosa li { margin-bottom: 0.5rem; }
+
+.lista-fontes { list-style: none; display: grid; gap: 0.6rem; margin-top: 1rem; }
+.lista-fontes li { background: var(--fundo-2); border: 1px solid var(--borda); border-radius: var(--raio); padding: 0.8rem 1rem; word-break: break-all; }
+
+/* Formulário de contato */
+.formulario { display: grid; gap: 1.1rem; max-width: 560px; }
+.campo { display: grid; gap: 0.35rem; }
+.campo label { font-weight: 600; font-size: 0.95rem; }
+.campo input, .campo textarea {
+  padding: 0.8rem 1rem;
+  border-radius: var(--raio);
+  border: 1px solid var(--borda);
+  background: var(--fundo-2);
+  color: var(--texto);
+  font-family: inherit;
+  font-size: 1rem;
+}
+.campo input:focus, .campo textarea:focus { outline: 2px solid var(--destaque); outline-offset: 1px; }
+.campo .erro-campo { color: var(--erro); font-size: 0.85rem; display: none; }
+.campo.invalido input, .campo.invalido textarea { border-color: var(--erro); }
+.campo.invalido .erro-campo { display: block; }
+
+.mensagem-sucesso {
+  display: none;
+  padding: 1rem 1.25rem;
+  border-radius: var(--raio);
+  background: rgba(52, 211, 153, 0.12);
+  border: 1px solid var(--sucesso);
+  color: var(--sucesso);
+  font-weight: 600;
+}
+.mensagem-sucesso.visivel { display: block; }
+
+/* --------------------------------------------------------------------------
+   11. PÁGINA 404
+   -------------------------------------------------------------------------- */
+.pagina-404 { text-align: center; padding-block: 5rem 4rem; }
+.pagina-404 .codigo { font-size: clamp(5rem, 18vw, 9rem); font-family: var(--fonte-titulo); font-weight: 800; color: var(--primaria); line-height: 1; }
+.pagina-404 i { font-size: 3.5rem; color: var(--destaque); margin-bottom: 1rem; }
+.pagina-404 p { color: var(--texto-2); max-width: 45ch; margin: 1rem auto 2rem; }
+
+/* --------------------------------------------------------------------------
+   12. RODAPÉ
+   -------------------------------------------------------------------------- */
+.rodape { border-top: 1px solid var(--borda); background: var(--fundo-2); padding-block: 2rem; }
+.rodape-interno { display: flex; flex-wrap: wrap; gap: 1rem; justify-content: space-between; align-items: center; }
+.rodape nav ul { display: flex; gap: 1.25rem; list-style: none; flex-wrap: wrap; }
+.rodape nav a { color: var(--texto-2); }
+.rodape small { color: var(--texto-2); }
+
+/* --------------------------------------------------------------------------
+   13. MODO DE LEITURA (acessibilidade — requisito 31)
+   Aumenta a fonte e reforça o contraste para leitores idosos.
+   -------------------------------------------------------------------------- */
+html.modo-leitura {
+  --tamanho-base: 20px;
+  --fundo: #000000;
+  --fundo-2: #101010;
+  --texto: #ffffff;
+  --texto-2: #e0e0e0;
+  --destaque: #ffd60a;
+  --borda: rgba(255, 255, 255, 0.35);
+}
+html.modo-leitura .icone-curso { background: rgba(255, 214, 10, 0.2); }
+html.modo-leitura .badge { color: #ffd60a; background: rgba(255, 214, 10, 0.15); }
+
+/* --------------------------------------------------------------------------
+   14. RESPONSIVIDADE (mobile-first)
+   -------------------------------------------------------------------------- */
+/* Tablets e notebooks */
+@media (min-width: 640px) {
+  .secao { padding-block: 4rem; }
+  .estrutura-curso { grid-template-columns: 1fr 1fr; }
+  .quiz-area { grid-column: 1 / -1; }
+}
+
+/* Telas grandes */
+@media (min-width: 1024px) {
+  .estrutura-curso { grid-template-columns: 1.1fr 0.9fr; }
+}
+
+/* Celulares: navegação vira menu hambúrguer */
+@media (max-width: 767px) {
+  .botao-menu { display: inline-flex; }
+  .navegacao {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: var(--fundo-2);
+    border-bottom: 1px solid var(--borda);
+    padding: 0.75rem 1.25rem 1.25rem;
+  }
+  .navegacao.aberta { display: block; }
+  .navegacao ul { flex-direction: column; }
+  .navegacao a { padding: 0.7rem 0.9rem; }
+  .rodape-interno { flex-direction: column; text-align: center; }
+}

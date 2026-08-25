@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-tema="escuro">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Página não encontrada — Cyber Chase.">
+  <title>Página não encontrada — Cyber Chase</title>
+  <link rel="icon" type="image/svg+xml" href="assets/img/logo.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  <script>
+    try {
+      if (localStorage.getItem("cc_tema") === "claro") document.documentElement.setAttribute("data-tema", "claro");
+      if (localStorage.getItem("cc_leitura") === "ativo") document.documentElement.classList.add("modo-leitura");
+    } catch (e) { /* usa o padrão escuro */ }
+  </script>
+</head>
+<body>
+  <a class="pular-conteudo" href="#conteudo">Pular para o conteúdo</a>
+
+  <!-- ========================= CABEÇALHO ========================= -->
+  <header class="cabecalho">
+    <div class="conteiner cabecalho-interno">
+      <a class="logo" href="index.html">
+        <img src="assets/img/logo.svg" alt="Escudo do Cyber Chase">
+        <span>Cyber Chase</span>
+      </a>
+      <nav class="navegacao" aria-label="Navegação principal">
+        <ul>
+          <li><a href="index.html">Início</a></li>
+          <li><a href="cursos.html">Cursos</a></li>
+          <li><a href="quiz.html">Quiz Geral</a></li>
+          <li><a href="dashboard.html">Meu Progresso</a></li>
+          <li><a href="sobre.html">Sobre</a></li>
+          <li><a href="contato.html">Contato</a></li>
+        </ul>
+      </nav>
+      <div class="acoes-cabecalho">
+        <button class="botao-icone botao-leitura" type="button" aria-label="Ativar modo de leitura" aria-pressed="false" title="Modo de leitura">
+          <i class="fa-solid fa-text-height" aria-hidden="true"></i>
+        </button>
+        <button class="botao-icone botao-tema" type="button" aria-label="Ativar tema claro" title="Alternar tema">
+          <i class="fa-solid fa-moon" aria-hidden="true"></i>
+        </button>
+        <button class="botao-icone botao-menu" type="button" aria-expanded="false" aria-label="Abrir menu">
+          <i class="fa-solid fa-bars" aria-hidden="true"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="conteudo">
+    <!-- Página de erro amigável (requisito 19) -->
+    <section class="pagina-404">
+      <div class="conteiner">
+        <i class="fa-solid fa-user-secret" aria-hidden="true"></i>
+        <p class="codigo">404</p>
+        <h1>Ops! Esta página sumiu…</h1>
+        <p>Até os melhores detetives erram o endereço de vez em quando. Mas não se preocupe: nada de perigoso por aqui.</p>
+        <a class="botao" href="index.html"><i class="fa-solid fa-house" aria-hidden="true"></i> Voltar para o início</a>
+      </div>
+    </section>
+  </main>
+
+  <!-- ========================== RODAPÉ ========================== -->
+  <footer class="rodape">
+    <div class="conteiner rodape-interno">
+      <p><strong>Cyber Chase</strong><br><small>Sua segurança começa aqui.</small></p>
+      <nav aria-label="Links do rodapé">
+        <ul>
+          <li><a href="sobre.html">Sobre</a></li>
+          <li><a href="contato.html">Contato</a></li>
+          <li><a href="sobre.html#privacidade">Política de Privacidade</a></li>
+        </ul>
+      </nav>
+      <small>© <span class="ano-atual">2026</span> Cyber Chase — Conteúdo educativo e gratuito.</small>
+    </div>
+  </footer>
+
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>

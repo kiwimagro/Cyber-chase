@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-tema="escuro">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Quiz geral do Cyber Chase: 10 perguntas sorteadas de todos os temas de cibersegurança.">
+  <title>Quiz Geral — Cyber Chase</title>
+  <link rel="icon" type="image/svg+xml" href="assets/img/logo.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  <script>
+    try {
+      if (localStorage.getItem("cc_tema") === "claro") document.documentElement.setAttribute("data-tema", "claro");
+      if (localStorage.getItem("cc_leitura") === "ativo") document.documentElement.classList.add("modo-leitura");
+    } catch (e) { /* usa o padrão escuro */ }
+  </script>
+</head>
+<body>
+  <a class="pular-conteudo" href="#conteudo">Pular para o conteúdo</a>
+
+  <!-- ========================= CABEÇALHO ========================= -->
+  <header class="cabecalho">
+    <div class="conteiner cabecalho-interno">
+      <a class="logo" href="index.html">
+        <img src="assets/img/logo.svg" alt="Escudo do Cyber Chase">
+        <span>Cyber Chase</span>
+      </a>
+      <nav class="navegacao" aria-label="Navegação principal">
+        <ul>
+          <li><a href="index.html">Início</a></li>
+          <li><a href="cursos.html">Cursos</a></li>
+          <li><a href="quiz.html" aria-current="page">Quiz Geral</a></li>
+          <li><a href="dashboard.html">Meu Progresso</a></li>
+          <li><a href="sobre.html">Sobre</a></li>
+          <li><a href="contato.html">Contato</a></li>
+        </ul>
+      </nav>
+      <div class="acoes-cabecalho">
+        <button class="botao-icone botao-leitura" type="button" aria-label="Ativar modo de leitura" aria-pressed="false" title="Modo de leitura">
+          <i class="fa-solid fa-text-height" aria-hidden="true"></i>
+        </button>
+        <button class="botao-icone botao-tema" type="button" aria-label="Ativar tema claro" title="Alternar tema">
+          <i class="fa-solid fa-moon" aria-hidden="true"></i>
+        </button>
+        <button class="botao-icone botao-menu" type="button" aria-expanded="false" aria-label="Abrir menu">
+          <i class="fa-solid fa-bars" aria-hidden="true"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="conteudo">
+    <section class="secao">
+      <div class="conteiner">
+        <!-- Tela de introdução do quiz -->
+        <div class="quiz-intro" id="quiz-intro">
+          <h1 class="titulo-secao">Quiz Geral</h1>
+          <p class="subtitulo-secao">Teste seus conhecimentos com 10 perguntas sorteadas de todos os temas do Cyber Chase. Você pode refazer quantas vezes quiser!</p>
+          <div class="estatistica-quiz">
+            <span class="badge badge-iniciante"><i class="fa-solid fa-shuffle" aria-hidden="true"></i> Perguntas sorteadas</span>
+            <span class="badge badge-sucesso"><i class="fa-solid fa-trophy" aria-hidden="true"></i> Melhor: <span id="melhor-pontuacao">—</span></span>
+          </div>
+          <button class="botao" id="comecar-quiz" type="button">
+            <i class="fa-solid fa-play" aria-hidden="true"></i> Começar quiz
+          </button>
+        </div>
+
+        <!-- O quiz é renderizado aqui pelo js/quiz.js (requisito 11) -->
+        <div class="card quiz" id="area-quiz"></div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ========================== RODAPÉ ========================== -->
+  <footer class="rodape">
+    <div class="conteiner rodape-interno">
+      <p><strong>Cyber Chase</strong><br><small>Sua segurança começa aqui.</small></p>
+      <nav aria-label="Links do rodapé">
+        <ul>
+          <li><a href="sobre.html">Sobre</a></li>
+          <li><a href="contato.html">Contato</a></li>
+          <li><a href="sobre.html#privacidade">Política de Privacidade</a></li>
+        </ul>
+      </nav>
+      <small>© <span class="ano-atual">2026</span> Cyber Chase — Conteúdo educativo e gratuito.</small>
+    </div>
+  </footer>
+
+  <script type="module" src="js/main.js"></script>
+  <script type="module">
+    // Lógica do quiz geral: sorteia 1 pergunta de cada curso (garante
+    // cobertura de temas) + 4 extras, depois embaralha as 10 escolhidas.
+    import { carregarCursos } from "./js/cursos.js";
+    import { embaralhar, iniciarQuiz } from "./js/quiz.js";
+    import { Progresso } from "./js/progresso.js";
+
+    const intro = document.getElementById("quiz-intro");
+    const areaQuiz = document.getElementById("area-quiz");
+    const botaoComecar = document.getElementById("comecar-quiz");
+
+    // Mostra a melhor pontuação salva no localStorage
+    function atualizarMelhor() {
+      const melhor = Progresso.melhorQuizGeral();
+      document.getElementById("melhor-pontuacao").textContent =
+        melhor === null ? "—" : `${melhor}/10`;
+    }
+
+    botaoComecar.addEventListener("click", async () => {
+      try {
+        const { cursos } = await carregarCursos();
+
+        // 1 pergunta sorteada de cada um dos 6 cursos
+        const escolhidas = cursos.map((curso) => embaralhar(curso.quiz)[0]);
+
+        // + 4 perguntas extras de qualquer tema (sem repetir as anteriores)
+        const restantes = embaralhar(cursos.flatMap((curso) => curso.quiz)).filter(
+          (pergunta) => !escolhidas.includes(pergunta)
+        );
+        escolhidas.push(...restantes.slice(0, 4));
+
+        // Esconde a introdução e inicia o quiz com as 10 perguntas embaralhadas
+        intro.hidden = true;
+        iniciarQuiz({
+          perguntas: embaralhar(escolhidas),
+          container: areaQuiz,
+          aoFinalizar: (pontos) => {
+            // Salva a melhor pontuação e atualiza o texto da introdução
+            Progresso.registrarQuizGeral(pontos);
+            atualizarMelhor();
+          },
+        });
+      } catch {
+        areaQuiz.innerHTML =
+          '<p class="erro-carregamento"><i class="fa-solid fa-triangle-exclamation" aria-hidden="true"></i> Não foi possível carregar as perguntas. Tente recarregar a página.</p>';
+      }
+    });
+
+    atualizarMelhor();
+  </script>
+</body>
+</html>

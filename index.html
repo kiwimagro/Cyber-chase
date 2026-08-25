@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-tema="escuro">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Cyber Chase: aprenda a se proteger contra golpes na internet com cursos gratuitos, quizzes e linguagem simples.">
+  <title>Cyber Chase — Sua segurança começa aqui</title>
+  <link rel="icon" type="image/svg+xml" href="assets/img/logo.svg">
+  <!-- Fontes e ícones via CDN (requisito 25: funcionam sem instalação) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  <!-- Aplica tema e modo de leitura salvos antes da renderização (evita piscada) -->
+  <script>
+    try {
+      if (localStorage.getItem("cc_tema") === "claro") document.documentElement.setAttribute("data-tema", "claro");
+      if (localStorage.getItem("cc_leitura") === "ativo") document.documentElement.classList.add("modo-leitura");
+    } catch (e) { /* armazenamento indisponível: usa o padrão escuro */ }
+  </script>
+</head>
+<body>
+  <a class="pular-conteudo" href="#conteudo">Pular para o conteúdo</a>
+
+  <!-- ========================= CABEÇALHO ========================= -->
+  <header class="cabecalho">
+    <div class="conteiner cabecalho-interno">
+      <a class="logo" href="index.html">
+        <img src="assets/img/logo.svg" alt="Escudo do Cyber Chase">
+        <span>Cyber Chase</span>
+      </a>
+      <nav class="navegacao" aria-label="Navegação principal">
+        <ul>
+          <li><a href="index.html" aria-current="page">Início</a></li>
+          <li><a href="cursos.html">Cursos</a></li>
+          <li><a href="quiz.html">Quiz Geral</a></li>
+          <li><a href="dashboard.html">Meu Progresso</a></li>
+          <li><a href="sobre.html">Sobre</a></li>
+          <li><a href="contato.html">Contato</a></li>
+        </ul>
+      </nav>
+      <div class="acoes-cabecalho">
+        <button class="botao-icone botao-leitura" type="button" aria-label="Ativar modo de leitura" aria-pressed="false" title="Modo de leitura">
+          <i class="fa-solid fa-text-height" aria-hidden="true"></i>
+        </button>
+        <button class="botao-icone botao-tema" type="button" aria-label="Ativar tema claro" title="Alternar tema">
+          <i class="fa-solid fa-moon" aria-hidden="true"></i>
+        </button>
+        <button class="botao-icone botao-menu" type="button" aria-expanded="false" aria-label="Abrir menu">
+          <i class="fa-solid fa-bars" aria-hidden="true"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="conteudo">
+    <!-- ========================= HERO ========================= -->
+    <section class="hero">
+      <div class="conteiner">
+        <p class="slogan"><i class="fa-solid fa-shield-halved" aria-hidden="true"></i> Sua segurança começa aqui</p>
+        <h1>Proteja-se contra golpes na internet</h1>
+        <p>Aprenda de um jeito simples, sem jargões técnicos, como se defender dos ataques mais comuns e manter seus dados em segurança.</p>
+        <a class="botao" href="cursos.html"><i class="fa-solid fa-rocket" aria-hidden="true"></i> Começar Agora</a>
+      </div>
+    </section>
+
+    <!-- ====================== ESTATÍSTICAS ====================== -->
+    <section class="secao">
+      <div class="conteiner">
+        <div class="estatisticas" role="list">
+          <div class="card estatistica" role="listitem"><strong>6</strong><span>cursos</span></div>
+          <div class="card estatistica" role="listitem"><strong>50+</strong><span>lições</span></div>
+          <div class="card estatistica" role="listitem"><strong>100%</strong><span>gratuito</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================= DEPOIMENTOS ======================= -->
+    <section class="secao">
+      <div class="conteiner">
+        <h2 class="titulo-secao">Quem já aprendeu com a gente</h2>
+        <p class="subtitulo-secao">Histórias de pessoas comuns que agora navegam com muito mais confiança.</p>
+        <div class="depoimentos">
+          <article class="card depoimento">
+            <blockquote>"Eu tinha medo de usar o celular. Agora sei reconhecer um golpe de longe!"</blockquote>
+            <footer>
+              <span class="avatar" aria-hidden="true">DM</span>
+              <div><strong>Dona Maria</strong><small>Aposentada, 68 anos</small></div>
+            </footer>
+          </article>
+          <article class="card depoimento">
+            <blockquote>"Fiz o curso de golpes e já identifiquei um Pix falso no meu trabalho."</blockquote>
+            <footer>
+              <span class="avatar" aria-hidden="true">CA</span>
+              <div><strong>Carlos</strong><small>Analista financeiro, 34 anos</small></div>
+            </footer>
+          </article>
+          <article class="card depoimento">
+            <blockquote>"Rápido, gratuito e em linguagem simples. Aprendi sobre LGPD sem complicação."</blockquote>
+            <footer>
+              <span class="avatar" aria-hidden="true">AN</span>
+              <div><strong>Ana</strong><small>Estudante, 22 anos</small></div>
+            </footer>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================= CHAMADA FINAL ====================== -->
+    <section class="secao chamada-final">
+      <div class="conteiner">
+        <h2 class="titulo-secao">Pronto para virar um agente da sua própria segurança?</h2>
+        <p class="subtitulo-secao">Comece agora: é gratuito, rápido e feito para quem não entende de tecnologia.</p>
+        <a class="botao" href="cursos.html"><i class="fa-solid fa-graduation-cap" aria-hidden="true"></i> Ver cursos</a>
+      </div>
+    </section>
+  </main>
+
+  <!-- ========================== RODAPÉ ========================== -->
+  <footer class="rodape">
+    <div class="conteiner rodape-interno">
+      <p><strong>Cyber Chase</strong><br><small>Sua segurança começa aqui.</small></p>
+      <nav aria-label="Links do rodapé">
+        <ul>
+          <li><a href="sobre.html">Sobre</a></li>
+          <li><a href="contato.html">Contato</a></li>
+          <li><a href="sobre.html#privacidade">Política de Privacidade</a></li>
+        </ul>
+      </nav>
+      <small>© <span class="ano-atual">2026</span> Cyber Chase — Conteúdo educativo e gratuito.</small>
+    </div>
+  </footer>
+
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>
