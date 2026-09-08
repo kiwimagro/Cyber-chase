@@ -1,4 +1,4 @@
-# 🛡️ Cyber Chase — Plataforma Educacional de Cibersegurança
+🛡️ Cyber Chase — Plataforma Educacional de Cibersegurança
 
 > **Sua segurança começa aqui.**
 
@@ -33,7 +33,7 @@ docker compose up -d
 #    http://localhost:8080
 ```
 
-O site é um conjunto de arquivos estáticos servido pelo **nginx** dentro do container.
+O site é um conjunto de arquivos estáticos dentro do container.
 Como a pasta do projeto é montada diretamente no container, qualquer edição nos
 arquivos aparece na hora (basta atualizar a página).
 
